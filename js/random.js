@@ -2,138 +2,112 @@ const cartas = [
     (carta1 = {
         nome: "Zoro",
         imagem: "http://dentrodachamine.com/wp-content/uploads/2018/12/zorosleeping.jpg",
-        atributos: { Ataque: 4, Defesa: 2, Velocidade: 3 }
+        atributos: { Ataque: 4, Vigor: 2, Habilidade: 2, Velocidade: 3 }
     }),
-    // Velocidade: 3 , Habilidade: 5
     (carta2 = {
         nome: "Dangai Ichigo",
         imagem: "http://dlrpg-hbe.weebly.com/uploads/4/7/6/1/47613475/9189964_orig.jpg",
-        atributos: { Ataque: 6, Defesa: 6, Velocidade: 3 }
+        atributos: { Ataque: 6, Vigor: 4, Habilidade: 6, Velocidade: 3 }
     }),
-    // Velocidade: 3 , Habilidade: 5
     (carta3 = {
         nome: "Zenitsu",
         imagem: "https://nerdhits.com.br/wp-content/uploads/2022/02/ZENITSU-1-1200x900.jpg",
-        atributos: { Ataque: 2, Defesa: 2, Velocidade: 4 }
+        atributos: { Ataque: 2, Vigor: 1, Habilidade: 2, Velocidade: 4 }
     }),
-    //Velocidade: 4 , Habilidade: 2
     (carta4 = {
         nome: "Wano Zoro",
         imagem: "https://criticalhits.com.br/wp-content/uploads/2021/12/zoro.jpg",
-        atributos: { Ataque: 9, Defesa: 7, Velocidade: 8 }
+        atributos: { Ataque: 9, Vigor: 10, Habilidade: 7, Velocidade: 8 }
     }),
-    //Velocidade: 8 , Habilidade: 10
     (carta5 = {
         nome: "Mugetsu Ichigo",
         imagem: "https://animesher.com/orig/0/69/691/6913/animesher.com_getsuga-tensho-japan-bleach-691392.jpg",
-        atributos: { Ataque: 10, Defesa: 8, Velocidade: 10 }
+        atributos: { Ataque: 10, Vigor: 9, Habilidade: 8, Velocidade: 10 }
     }),
-    //Velocidade: 10 , Habilidade: 8
     (carta6 = {
         nome: "Asleep Zenitsu",
         imagem: "https://oxentesensei.com.br/wp-content/uploads/2021/10/CAPA-23-1.jpg",
-        atributos: { Ataque: 8, Defesa: 6, Velocidade: 11 }
+        atributos: { Ataque: 8, Vigor: 11, Habilidade: 6, Velocidade: 11 }
     })
-    // Velocidade: 11 , Habilidade: 10
 ];
+
+const buttonSortear = document.getElementById("button-sortear");
+const buttonJogar = document.getElementById("button-jogar");
 
 let cartaJogador;
 let cartaMaquina;
 
+
 function sortearCarta() {
-    const numeroCartaMaquina = parseInt(Math.random() * 7);
+    const numeroCartaMaquina = parseInt(Math.random() * 7, 10);
+    let numeroCartaJogador = parseInt(Math.random() * 7, 10);
+
     cartaMaquina = cartas[numeroCartaMaquina];
 
-    let numeroCartaJogador = parseInt(Math.random() * 7);
-    while (numeroCartaJogador == numeroCartaMaquina) {
-        numeroCartaJogador = parseInt(Math.random() * 7);
+    while (numeroCartaJogador === numeroCartaMaquina) {
+        numeroCartaJogador = parseInt(Math.random() * 7, 10);
     }
+
     cartaJogador = cartas[numeroCartaJogador];
 
-    document.getElementById("btnSortear").disabled = true;
-    document.getElementById("btnJogar").disabled = false;
-    exibirCartaJogador();
+    buttonSortear.disabled = true;
+    buttonJogar.disabled = false;
+
+    const divCartaJogador = document.getElementById("carta-jogador");
+    exibirCarta(divCartaJogador, cartaJogador);
 }
 
+
 function obtemAtributoSelecionado() {
-    let radioAtributos = document.getElementsByName("atributo");
+    const radioAtributos = document.getElementsByName("atributo");
 
     for (let i = 0; i < radioAtributos.length; i++) {
-        if (radioAtributos[i].checked == true) {
+        if (radioAtributos[i].checked === true) {
             return radioAtributos[i].value;
         }
     }
 }
 
 function jogar() {
-    let atributoSelecionado = obtemAtributoSelecionado();
-    let divResultado = document.getElementById("resultado");
+    const atributoSelecionado = obtemAtributoSelecionado();
+    const divResultado = document.getElementById("resultado");
+    let resultado = "Empatou";
 
     if (
         cartaJogador.atributos[atributoSelecionado] >
         cartaMaquina.atributos[atributoSelecionado]
     ) {
-        htmlResultado = "<p class='resultado-final'>Venceu</p>";
+        resultado = "Venceu";
     } else if (
         cartaJogador.atributos[atributoSelecionado] <
         cartaMaquina.atributos[atributoSelecionado]
     ) {
-        htmlResultado = "<p class='resultado-final'>Perdeu</p>";
-    } else {
-        htmlResultado = "<p class='resultado-final'>Empatou</p>";
+        resultado = "Perdeu";
     }
-    divResultado.innerHTML = htmlResultado;
 
-    document.getElementById("btnJogar").disabled = true;
-    console.log(cartaMaquina.nome);
-    exibirCartaMaquina();
+    divResultado.innerHTML = `<p class='resultado-final'>${resultado}</p>`;
+
+    buttonJogar.disabled = true;
+
+    const divCartaMaquina = document.getElementById("carta-maquina")
+    exibirCarta(divCartaMaquina, cartaMaquina);
 }
 
-function exibirCartaJogador() {
-    let divCartaJogador = document.getElementById("carta-jogador");
-    divCartaJogador.style.backgroundImage = `url(${cartaJogador.imagem})`;
-    //divCartaJogador.style.backgroundImage = "url(" + cartaJogador.imagem + ")"
-    let moldura =
-        '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png">';
-    let tagHTML = "<div id='opcoes' class='carta-status'>";
+function exibirCarta(carta, jogador) {
+    let atributosJogador = "";
 
-    let opcoesTexto = "";
+    carta.style.backgroundImage = `url(${jogador.imagem})`;
 
-    for (let atributo in cartaJogador.atributos) {
-        opcoesTexto +=
-            "<input type='radio' name='atributo' value='" +
-            atributo +
-            "'>" +
-            atributo +
-            " " +
-            cartaJogador.atributos[atributo] +
-            "<br>";
+    for (let atributo in jogador.atributos) {
+        atributosJogador += `<p>${atributo} ${jogador.atributos[atributo]}</p>`;
     }
-    let nome = `<p class="carta-subtitle">${cartaJogador.nome}`;
 
-    divCartaJogador.innerHTML = moldura + nome + tagHTML + opcoesTexto + "</div>";
+    carta.innerHTML = `
+        <img src="file:///C:/Users/Avenue%20Code/Desktop/learning/game/assets/card.png">
+        <p class='carta-subtitle'>${jogador.nome}</p>
+        <div class='carta-status'${atributosJogador}</div>
+    `;
 }
 
-function exibirCartaMaquina() {
-    let divCartaMaquina = document.getElementById("carta-maquina");
-    divCartaMaquina.style.backgroundImage = `url(${cartaMaquina.imagem})`;
-    // divCartaJogador.style.backgroundImage = "url(" + cartaJogador.imagem + ")"
-    let moldura =
-        '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png">';
-    let tagHTML = "<div id='opcoes' class='carta-status'>";
-
-    let opcoesTexto = "";
-    for (let atributo in cartaMaquina.atributos) {
-        opcoesTexto +=
-            "<p type='text' name='atributo' value='" +
-            atributo +
-            "'>" +
-            atributo +
-            " " +
-            cartaMaquina.atributos[atributo] +
-            "</p>";
-    }
-    let nome = `<p class="carta-subtitle">${cartaMaquina.nome}</p>`;
-
-    divCartaMaquina.innerHTML = moldura + nome + tagHTML + opcoesTexto + "</div>";
-}
+buttonSortear.addEventListener("click", sortearCarta);
+buttonJogar.addEventListener("click", jogar);
