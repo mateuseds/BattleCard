@@ -1,4 +1,4 @@
-# Battle-Cards
+# Battle Card
 ### Learning and Producing
 
 This is one of my projects after starting to study JavaScript. It's a simple card battle game.
@@ -11,7 +11,7 @@ You and the computer have two different decks of ten cards each (or more). JavaS
 _________________________________________________________________________________________________________________________________________________________________________
 
 
-# Battle-Cards
+# Battle Card
 ### Aprendendo e Produzindo
 
 Este é um dos meus projetos depois de começar a estudar JavaScript. Um jogo de batalha de cartas simples.
