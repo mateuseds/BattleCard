@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>
+        Battle Cards
+    </title>
+
+    <link href="C:\Users\Avenue Code\Desktop\Learning\game\cards.css" rel="stylesheet" type="text/css">
+</head>
+
+<header class="header">
+
+    <div class="social">
+        <a href="https://www.linkedin.com/in/mateuseds/" title="LinkedIn" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Cards" class="social-logo"></a>
+
+        <a href="https://github.com/mateuseds" title="GitHub" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Cards" class="social-logo"></a>
+    </div>
+
+</header>
+
+<body class="body">
+    <div class="container">
+        <h1 class="page-title">Battle cards</h1>
+
+        <button class="button" onclick="sortearCarta()" id="btnSortear">Sortear carta</button>
+
+        <form id="form" class="form">
+            <h2 class="h2">Escolha o seu atributo</h2>
+
+            <div class="cartas-wrapper">
+
+                <div id="carta-jogador" class="carta-jogador">
+                    <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png">
+                    <h3></h3>
+                </div>
+
+
+                <div class="versus">
+                    <img src="https://pbs.twimg.com/media/FOVZfD4XwAAyaja?format=png&name=900x900">
+                </div>
+
+
+                <div id="carta-maquina" class="carta-maquina">
+                    <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png">
+                </div>
+
+            </div>
+
+            <button class="button" type="button" id="btnJogar" onclick="jogar()" disabled="false">Jogar</button>
+
+            <div id="resultado"></div>
+        </form>
+    </div>
+
+    </div>
+
+    <script src="C:\Users\Avenue Code\Desktop\Learning\game\random.js"></script>
+
+
+
+</body>
+
+</html>
