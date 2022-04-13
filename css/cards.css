@@ -1,3 +1,18 @@
+body {
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px);
+}
+
+.app {
+    font-family: "Roboto Mono", monospace;
+    padding: 0px;
+    height: 100%;
+    margin: 0px;
+}
+
 .header {
     background: #46474b;
     padding: 20px;
@@ -10,31 +25,26 @@
     justify-content: flex-end;
 }
 
-.social-logo {
+.social__logo {
     width: 45px;
     margin: 0 10px;
     border-radius: 5px;
     transition: 0.5s transform ease-in-out;
 }
 
-.social-logo:hover {
+.social__logo:hover {
     transform: scale(1.2);
-}
-
-.body {
-    font-family: "Roboto Mono", monospace;
-    padding: 0px;
-    margin: 0px;
-    background-image: url("https://i.pinimg.com/originals/a6/34/01/a6340191518b0bd7604f19e44e89c5b0.jpg");
-    backdrop-filter: blur(5px);
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
 }
 
 .container {
     text-align: center;
     padding: 20px;
+}
+
+.page-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px;
 }
 
 .button {
@@ -45,15 +55,13 @@
     font-size: 15px;
 }
 
-.h2 {
-    margin: 20px 10px 20px;
-}
-
-
-/* .form {
+.page-subtittle {
     display: flex;
-    flex-direction: column;
-} */
+    justify-content: center;
+    margin: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
 .cartas-wrapper {
     display: flex;
@@ -62,7 +70,7 @@
     width: 100%;
 }
 
-.carta-jogador {
+.carta {
     overflow: auto;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -70,11 +78,11 @@
     display: flex;
     align-items: flex-end;
     position: relative;
-    background-size: 350px 300px;
+    background-size: 368px 265px;
     background-repeat: no-repeat;
-    background-position-x: 5px;
-    background-position-y: 10px;
-    border-radius: 33px;
+    background-position-x: 35px;
+    background-position-y: 44px;
+    border-radius: 60px;
 }
 
 .versus img {
@@ -82,28 +90,26 @@
     width: 200px;
 }
 
-.carta-maquina {
-    overflow: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    background-size: 350px 300px;
-    background-repeat: no-repeat;
-    background-position-x: 5px;
-    background-position-y: 10px;
-    border-radius: 33px;
+.carta-subtitle {
+    position: absolute;
+    top: 33px;
+    left: 60px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-
-/* .carta-subtitle {
-  }
 .carta-status {
+    background-color: #605454;
+    position: absolute;
+    bottom: 60px;
+    right: 36px;
+    padding: 78px 128px;
+    background-position: center;
+    display: block;
+    align-items: stretch;
+    border-radius: 5px;
 }
-.carta-status input {
-  } */
 
 .resultado-final {
     display: inline-flex;
